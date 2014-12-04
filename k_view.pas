@@ -13,8 +13,41 @@ procedure _drawHanoi(nr: integer; hanoii: htable);
 procedure draw(rhanoi: hanoiRecord);
 procedure _debug(hanoii: htable; index: integer);
 procedure _drawScore(rhanoi: hanoiRecord);
+procedure _drawModal(sMessage: string; sType: string);
 
 implementation
+
+procedure _drawModal(sMessage: string; sType: string);
+begin
+  case sType of
+    'warning':
+    begin
+         gotoxy(2,6);
+         TextColor(Yellow);
+         write(sMessage);
+         TextColor(White);
+    end;
+    'error':
+    begin
+         gotoxy(2,6);
+         TextColor(red);
+         write(sMessage);
+         TextColor(White);
+    end;
+    'prompt':
+    begin
+         gotoxy(2,6);
+         TextColor(green);
+         write(sMessage+' ');
+         TextColor(White);
+         cursoron;
+    end
+    else begin
+         gotoxy(2,6);
+         write('                                       ');
+    end;
+  end;
+end;
 
 procedure _drawScore(rhanoi: hanoiRecord);
 begin
@@ -72,12 +105,14 @@ begin
   //hshort
   for i := 2 to 66 do
   begin
+    gotoxy(i, 5);
+    Write(AnsiChar(#205));
     gotoxy(i, 7);
     Write(AnsiChar(#205));
     gotoxy(i, 9);
     Write(AnsiChar(#205));
-    gotoxy(i, 11);
-    Write(AnsiChar(#205));
+    //gotoxy(i, 11);
+    //Write(AnsiChar(#205));
   end;
   gotoxy(22, 4);
   Write('Christmass tree of Hanoi');
@@ -177,7 +212,6 @@ begin
   for i := 0 to 2 do
     _drawHanoi(i, rhanoi.t);
   _drawScore(rhanoi);
-
 
 end;
 

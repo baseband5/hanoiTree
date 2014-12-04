@@ -12,16 +12,20 @@ uses {$IFDEF UNIX} {In case of Unix} {$ENDIF}
 var
   znak: word;
   rhanoi: hanoiRecord;
+  size:integer;
 
 {$R *.res}
 
 begin
   cursoroff;
   _drawGrid();
-  hanoiinit(4, rhanoi);
+  _drawModal('Set size','prompt');
+  Readln(size);
+  cursoroff;
+  _drawModal('','');
+  hanoiinit(size, rhanoi);
   draw(rhanoi);
   while (doIwin(rhanoi)) do
-  //while true do
   begin
     move(znak, rhanoi);
     znak := M_ReadKey;

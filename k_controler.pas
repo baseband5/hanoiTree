@@ -57,7 +57,10 @@ begin
       begin
         rhanoi.c := rhanoi.c + 1;
         _drawCursor(rhanoi);
-      end;                    { Prawa }
+      end else
+        begin
+          _drawModal('Out of range','warning');
+          end;{ Prawa }
     Ord('q'): halt(1);
     Ord('z'): _debug(rhanoi.t, 0);
     Ord('x'): _debug(rhanoi.t, 1);
