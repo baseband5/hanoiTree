@@ -14,7 +14,7 @@ type
     t: htable;
     c: integer;
     clip: integer;
-    m:integer;
+    m: integer;
   end;
 
 procedure hanoiinit(Height: integer; var rhanoi: hanoiRecord);
@@ -30,6 +30,7 @@ var
 begin
   rhanoi.c := 0;
   rhanoi.clip := 0;
+  rhanoi.m := 0;
 
   SetLength(rhanoi.t[0], Height);
   SetLength(rhanoi.t[1], Height);
@@ -47,7 +48,7 @@ var
 begin
   for i := 0 to Length(rhanoi.t[0]) - 1 do
   begin
-    if (rhanoi.t[0][i] <> 0) or (rhanoi.t[1][i] <> 0) then
+    if (rhanoi.t[0][i] <> 0) or (rhanoi.t[1][i] <> 0) or (rhanoi.clip<>0) then
     begin
       doIwin := True;
       exit;

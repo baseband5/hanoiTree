@@ -34,25 +34,29 @@ begin
     //#32: ; spacja
     328:
     begin
+      if rhanoi.clip = 0 then
+        rhanoi.m := rhanoi.m + 1;
       getpiece(rhanoi);
       draw(rhanoi);
       cheat(rhanoi);
     end;{ Gorna }
     336:
     begin
+      if rhanoi.clip <> 0 then
+        rhanoi.m := rhanoi.m + 1;
       putpiece(rhanoi);
       draw(rhanoi);
     end;                    { Dolna }
     331: if rhanoi.c > 0 then
       begin
         rhanoi.c := rhanoi.c - 1;
-        _drawCursor(rhanoi.c);
+        _drawCursor(rhanoi);
         { Lewa }
       end;
     333: if rhanoi.c < 2 then
       begin
         rhanoi.c := rhanoi.c + 1;
-        _drawCursor(rhanoi.c);
+        _drawCursor(rhanoi);
       end;                    { Prawa }
     Ord('q'): halt(1);
     Ord('z'): _debug(rhanoi.t, 0);
@@ -85,15 +89,15 @@ begin
     if zna = cc[i] then
     begin
       if zna <> 328 then //exclude double up and inifinity loop between move and cheat
-      move(zna, rhanoi);
+        move(zna, rhanoi);
     end
     else
     begin
-        move(zna,rhanoi);
-        exit;
+      move(zna, rhanoi);
+      exit;
     end;
   end;
-play();
+  play();
 end;
 
 end.

@@ -8,20 +8,28 @@ uses
   crt, k_model;
 
 procedure _drawGrid();
-procedure _drawCursor(cursor: integer);
+procedure _drawCursor(rhanoi: hanoiRecord);
 procedure _drawHanoi(nr: integer; hanoii: htable);
 procedure draw(rhanoi: hanoiRecord);
-procedure _debug(hanoii:htable;index:integer);
+procedure _debug(hanoii: htable; index: integer);
+procedure _drawScore(rhanoi: hanoiRecord);
 
 implementation
-procedure _debug(hanoii:htable;Index:Integer);
-var
-  i:integer;
+
+procedure _drawScore(rhanoi: hanoiRecord);
 begin
-  for i:=0 to Length(hanoii[index]) - 1 do
+  gotoxy(75, 4);
+  Write(rhanoi.m);
+end;
+
+procedure _debug(hanoii: htable; Index: integer);
+var
+  i: integer;
+begin
+  for i := 0 to Length(hanoii[index]) - 1 do
   begin
-       gotoxy(68,23-i);
-       write(hanoii[index][i]);
+    gotoxy(68, 23 - i);
+    Write(hanoii[index][i]);
   end;
 end;
 
@@ -73,20 +81,56 @@ begin
   end;
   gotoxy(22, 4);
   Write('Christmass tree of Hanoi');
+  gotoxy(68, 4);
+  Write('Moves: ');
 end;
 
-procedure _drawCursor(cursor: integer);
+procedure _drawCursor(rhanoi: hanoiRecord);
 var
-  i: integer;
+  i, j, max: integer;
 begin
+  max := 10;
   for i := 0 to 2 do
   begin
     gotoxy(12 + i * 22, 8);
     Write(' ');
   end;
 
-  gotoxy(12 + cursor * 22, 8);
+  gotoxy(12 + rhanoi.c * 22, 8);
   Write('V');
+
+  for i := 0 to 2 do
+  begin
+    gotoxy(3 + i * 22, 10);
+    Write('                   ');
+  end;
+  gotoxy(3 + rhanoi.c * 22, 10);
+  if rhanoi.clip = 0 then
+  begin
+
+    Write('                   ');
+  end
+  else if rhanoi.clip = 1 then
+  begin
+    for j := 0 to max - 2 do
+      Write(' ');
+    Write('*');
+    for j := 0 to max - 2 do
+      Write(' ');
+  end
+  else
+  begin
+    for j := 0 to max - rhanoi.clip - 1 do
+      Write(' ');
+    for j := 0 to rhanoi.clip - 2 do
+      Write('/');
+    Write('|');
+    for j := 0 to rhanoi.clip - 2 do
+      Write('\');
+    for j := 0 to max - rhanoi.clip - 1 do
+      Write(' ');
+  end;
+
 end;
 
 procedure _drawHanoi(nr: integer; hanoii: htable);
@@ -129,9 +173,11 @@ procedure draw(rhanoi: hanoiRecord);
 var
   i: integer;
 begin
-  _drawCursor(rhanoi.c);
+  _drawCursor(rhanoi);
   for i := 0 to 2 do
     _drawHanoi(i, rhanoi.t);
+  _drawScore(rhanoi);
+
 
 end;
 
