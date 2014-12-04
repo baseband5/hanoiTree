@@ -74,7 +74,7 @@ begin
   end;
 end;
 
-procedure putpiece(var rhanoi: hanoiRecord);
+procedure putPiece(var rhanoi: hanoiRecord);
 var
   i: integer;
 begin

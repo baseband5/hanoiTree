@@ -1,4 +1,4 @@
-program swieta;
+program hanoiTree;
 
 {$mode objfpc}{$H+}
 

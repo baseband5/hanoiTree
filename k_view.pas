@@ -71,8 +71,8 @@ begin
     gotoxy(i, 11);
     Write(AnsiChar(#205));
   end;
-  gotoxy(26, 4);
-  Write('Choinki z Hanoi');
+  gotoxy(22, 4);
+  Write('Christmass tree of Hanoi');
 end;
 
 procedure _drawCursor(cursor: integer);

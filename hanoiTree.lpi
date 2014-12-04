@@ -10,7 +10,7 @@
       </Flags>
       <SessionStorage Value="InProjectDir"/>
       <MainUnit Value="0"/>
-      <Title Value="ChoinkiHanoi"/>
+      <Title Value="Christmass tree of Hanoi"/>
       <UseAppBundle Value="False"/>
       <ResourceType Value="res"/>
     </General>
@@ -37,9 +37,9 @@
     </RunParams>
     <Units Count="5">
       <Unit0>
-        <Filename Value="project1.lpr"/>
+        <Filename Value="hanoiTree.lpr"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="project1"/>
+        <UnitName Value="hanoiTree"/>
       </Unit0>
       <Unit1>
         <Filename Value="k_music.pas"/>
@@ -67,7 +67,7 @@
     <Version Value="11"/>
     <PathDelim Value="\"/>
     <Target>
-      <Filename Value="project1"/>
+      <Filename Value="hanoiTree"/>
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
