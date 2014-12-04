@@ -9,11 +9,10 @@
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="project1"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="10"/>
-        <CursorPos X="7" Y="28"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="11"/>
         <UsageCount Value="21"/>
         <Loaded Value="True"/>
       </Unit0>
@@ -44,10 +43,11 @@
         <Filename Value="k_model.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="k_model"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="80"/>
-        <CursorPos X="9" Y="100"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="19"/>
         <FoldState Value=" T4601R"/>
         <UsageCount Value="21"/>
         <Loaded Value="True"/>
