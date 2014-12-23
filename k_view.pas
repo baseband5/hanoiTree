@@ -17,6 +17,11 @@ procedure _drawModal(sMessage: string; sType: string);
 
 implementation
 
+procedure _drawChunk();
+begin
+
+end;
+
 procedure _drawModal(sMessage: string; sType: string);
 begin
   case sType of
@@ -118,6 +123,13 @@ begin
   Write('Christmass tree of Hanoi');
   gotoxy(68, 4);
   Write('Moves: ');
+  TextColor(Brown);
+  for i:=0 to 2 do
+  begin
+       gotoxy(12 + i * 22, 23);
+       Write('|');
+  end;
+  TextColor(White);
 end;
 
 procedure _drawCursor(rhanoi: hanoiRecord);
@@ -149,7 +161,9 @@ begin
   begin
     for j := 0 to max - 2 do
       Write(' ');
+    TextColor(Yellow);
     Write('*');
+    TextColor(White);
     for j := 0 to max - 2 do
       Write(' ');
   end
@@ -157,13 +171,17 @@ begin
   begin
     for j := 0 to max - rhanoi.clip - 1 do
       Write(' ');
+    TextColor(Green);
     for j := 0 to rhanoi.clip - 2 do
       Write('/');
+    TextColor(Brown);
     Write('|');
+    TextColor(Green);
     for j := 0 to rhanoi.clip - 2 do
       Write('\');
     for j := 0 to max - rhanoi.clip - 1 do
       Write(' ');
+    TextColor(White);
   end;
 
 end;
@@ -185,7 +203,11 @@ begin
     begin
       for j := 0 to max - 2 do
         Write(' ');
+
+      TextColor(Yellow);
       Write('*');
+      TextColor(White);
+
       for j := 0 to max - 2 do
         Write(' ');
     end
@@ -193,13 +215,17 @@ begin
     begin
       for j := 0 to max - hanoii[nr][i] - 1 do
         Write(' ');
+      TextColor(Green);
       for j := 0 to hanoii[nr][i] - 2 do
         Write('/');
+      TextColor(Brown);
       Write('|');
+      TextColor(Green);
       for j := 0 to hanoii[nr][i] - 2 do
         Write('\');
       for j := 0 to max - hanoii[nr][i] - 1 do
         Write(' ');
+      TextColor(White);
     end;
   end;
 end;

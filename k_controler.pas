@@ -11,6 +11,7 @@ procedure move(znak: word; var rhanoi: hanoiRecord);
 procedure cheat(var rhanoi: hanoiRecord);
 function M_ReadKey: word;
 
+
 implementation
 
 function M_ReadKey: word; //ta funkcja zostala znaleziona w sieci
@@ -34,33 +35,45 @@ begin
     //#32: ; spacja
     328:
     begin
-      if rhanoi.clip = 0 then
+      if rhanoi.getPiece() then
+      begin
         rhanoi.m := rhanoi.m + 1;
-      getpiece(rhanoi);
-      draw(rhanoi);
+        _drawHanoi(rhanoi.c, rhanoi.t);
+        _drawCursor(rhanoi);
+        _drawScore(rhanoi);
+      end
+      else
+      begin
+           _drawModal('Clipboard is not empty!','warning');
+      end;
+
       cheat(rhanoi);
     end;{ Gorna }
     336:
     begin
       if rhanoi.clip <> 0 then
         rhanoi.m := rhanoi.m + 1;
-      putpiece(rhanoi);
-      draw(rhanoi);
+      rhanoi.putpiece();
+      _drawHanoi(rhanoi.c, rhanoi.t);
+      _drawCursor(rhanoi);
+      _drawScore(rhanoi);
     end;                    { Dolna }
-    331: if rhanoi.c > 0 then
+    331: if rhanoi.cutsorLeft() then
       begin
-        rhanoi.c := rhanoi.c - 1;
         _drawCursor(rhanoi);
-        { Lewa }
+      end
+      else
+      begin
+        _drawModal('Out of range', 'warning');
       end;
-    333: if rhanoi.c < 2 then
+    333: if rhanoi.cutsorRight() then
       begin
-        rhanoi.c := rhanoi.c + 1;
         _drawCursor(rhanoi);
-      end else
-        begin
-          _drawModal('Out of range','warning');
-          end;{ Prawa }
+      end
+      else
+      begin
+        _drawModal('Out of range', 'warning');
+      end;
     Ord('q'): halt(1);
     Ord('z'): _debug(rhanoi.t, 0);
     Ord('x'): _debug(rhanoi.t, 1);

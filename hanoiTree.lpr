@@ -23,12 +23,13 @@ begin
   Readln(size);
   cursoroff;
   _drawModal('','');
-  hanoiinit(size, rhanoi);
+  rhanoi.init(size);
   draw(rhanoi);
-  while (doIwin(rhanoi)) do
+  while (rhanoi.doIwin()) do
   begin
     move(znak, rhanoi);
     znak := M_ReadKey;
+    _drawModal('','');
   end;
 end.
 
